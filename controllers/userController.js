@@ -81,7 +81,7 @@ const listarUno = async (req, res) => {
   const { id } = req.params;
 
   //Validar si existe el Registro
-  const usuario = await usuario.findById(id);
+  const usuario = await Usuario.findById(id);
 
   if (!usuario) {
     const error = new Error('Registro no encontrado.');
