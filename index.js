@@ -2,6 +2,7 @@ import express from 'express';
 import dotenv from 'dotenv';
 import conectarDB from './config/db.js';
 
+
 //Importación de rutas
 import usersRoutes from "./routes/usersRoutes.js";
 
@@ -16,7 +17,11 @@ dotenv.config();
 conectarDB();
 
 //Routing del API
-app.use("api/v1/users", usersRoutes);
+app.use("/api/users", usersRoutes);
+
+app.get("/", (req, res)=>{
+  res.send("Welcome to the API");
+})
 
 //Obtenemos una varibale de entorno
 const PORT = process.env.PORT || 3000
@@ -26,3 +31,5 @@ const PORT = process.env.PORT || 3000
 app.listen(PORT,()=>{
   console.log(`Api escuchando en ${PORT}`)
 })
+
+export default app;
